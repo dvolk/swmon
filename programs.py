@@ -13,21 +13,27 @@ def identify_firefox(user_processes):
 def identify_epsr(user_processes):
     for p in user_processes:
         if "/opt/epsr26/EPSR/bin/epsr" in p:
-            return "EPSR"
+            return "EPSR-26"
         if "/opt/epsr26/EPSR/gui/EPSRshell.jar" in p:
-            return "EPSR"
+            return "EPSR-25"
 
 
 def identify_mantidworkbench65(user_processes):
     for p in user_processes:
         if "/opt/mantidworkbench6.5/bin/mantidworkbench" in p:
-            return "mantidworkbench65"
+            return "mantidworkbench-65"
+
+
+def identify_mantidworkbenchnightly(user_processes):
+    for p in user_processes:
+        if "/opt/mantidworkbenchnightly/bin/mantidworkbench" in p:
+            return "mantidworkbench-nightly"
 
 
 def identify_sasview5(user_processes):
     for p in user_processes:
         if "/opt/sasview5/bin/python" in p:
-            return "sasview5"
+            return "sasview-5"
 
 
 def identify_libreoffice(user_processes):
@@ -39,4 +45,16 @@ def identify_libreoffice(user_processes):
 def identify_matlab2021a(user_processes):
     for p in user_processes:
         if "/opt/matlab2021a/bin/glnxa64/MATLAB" in p:
-            return "matlab2021a"
+            return "matlab-2021a"
+
+
+def identify_xvnc(user_processes):
+    for p in user_processes:
+        if "/usr/bin/Xvnc" in p:
+            return "Xvnc"
+
+
+def identify_xfwm4(user_processes):
+    for p in user_processes:
+        if "xfwm4" in p:
+            return "xfwm4"

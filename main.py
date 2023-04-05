@@ -78,9 +78,12 @@ progs = [
     programs.identify_firefox,
     programs.identify_epsr,
     programs.identify_mantidworkbench65,
+    programs.identify_mantidworkbenchnightly,
     programs.identify_sasview5,
     programs.identify_libreoffice,
     programs.identify_matlab2021a,
+    programs.identify_xvnc,
+    programs.identify_xfwm4,
 ]
 
 
