@@ -6,6 +6,8 @@ import logging
 import datetime
 import subprocess
 import pathlib
+import collections
+import os
 
 import pymongo
 import argh
@@ -15,30 +17,38 @@ import programs
 logging.basicConfig(level=logging.DEBUG)
 
 
-mongodb = pymongo.MongoClient("mongodb://localhost")
-workspaces = mongodb["ada"]["workspaces"]
-
-
-def get_active_workspaces():
+def get_active_workspaces(mongo_url, mongo_db):
     """
     Return workspaces active in the last 10 minutes.
     """
-    time_now = datetime.datetime.utcnow()
+    mongodb = pymongo.MongoClient(mongo_url)
+    workspaces = mongodb[mongo_db]["workspaces"]
+
+    time_now = datetime.datetime.now()
     ws = workspaces.find({"state": "CLAIMED"})
-    for w in ws:
+    info = list()
+    for w in ws:1
         last_activity = w.get("parameters", {}).get("last_activity")
-        if last_activity and type(last_activity) == str:
-            last_activity_time = datetime.datetime.strptime(
-                last_activity, "%Y-%m-%d %H:%M:%S"
+        if not last_activity or not type(last_activity) == str:
+            print(
+                "workspace {w.get('_id')} belonging to {w.get('owner')} doesn't have last_activity"
             )
-            last_activity_ago = (time_now - last_activity_time).seconds
-            print(last_activity_ago)
-            if last_activity_ago < 600:
-                # serialize weird types to string
-                for k, v in w.items():
-                    if type(v) not in [str, int, float, list, dict]:
-                        w[k] = str(v)
-                yield w
+            continue
+        last_activity_time = datetime.datetime.strptime(
+            last_activity, "%Y-%m-%d %H:%M:%S"
+        )
+        last_activity_ago = (time_now - last_activity_time).seconds
+        print(last_activity_ago)
+        info.append([w.get("owner"), w.get("name"), last_activity, last_activity_ago])
+        if last_activity_ago < 600:
+            # serialize weird types to string
+            for k, v in w.items():
+                if type(v) not in [str, int, float]:
+                    w[k] = str(v)
+            yield w
+    import tabulate
+
+    print(tabulate.tabulate(info))
 
 
 def get_running_1(w):
@@ -66,6 +76,11 @@ def get_running(ws):
 
 progs = [
     programs.identify_firefox,
+    programs.identify_epsr,
+    programs.identify_mantidworkbench65,
+    programs.identify_sasview5,
+    programs.identify_libreoffice,
+    programs.identify_matlab2021a,
 ]
 
 
@@ -88,19 +103,41 @@ def run():
     go over the process list to identify running programs
     save the data to a json file.
     """
-    ws = list(get_active_workspaces())
+    mongo_url = os.environ.get("MONGO_URL")
+    mongo_db = os.environ.get("MONGO_DB")
+    if not mongo_url or not mongo_db:
+        print("You must define MONGO_URL and MONGO_DB environmental variables. Exiting.")
+        return
+
+    ws = list(get_active_workspaces(mongo_url, mongo_db))
     ws = get_running(ws)
     pathlib.Path("saved").mkdir(exist_ok=True)
-    filename = f"saved/{datetime.datetime.utcnow().strftime('%Y%m%d-%H%M%S')}.json"
+    filename = f"saved/{datetime.datetime.now().strftime('%Y%m%d-%H%M%S')}.json"
+    print(f"saving to {filename}")
     with open(filename, "w") as f:
         f.write(json.dumps(ws, indent=4))
 
 
 def out1(filename):
+    """Print a table showing frequency of programs found at a certain time."""
     ws = json.loads(pathlib.Path(filename).read_text())
+    print(f"analysing {len(ws)} workspaces")
+
     ws = identify_programs(ws)
+    progs = collections.defaultdict(int)
     for w in ws:
-        pass
+        for p in w.get("found_programs", list()):
+            progs[p] += 1
+
+    import tabulate
+
+    print(
+        tabulate.tabulate(
+            list(progs.items()),
+            headers=["program name", "count"],
+            tablefmt="simple_outline",
+        )
+    )
 
 
 if __name__ == "__main__":
