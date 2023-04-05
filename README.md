@@ -22,7 +22,7 @@ To get the data:
 python3 main.py run
 ```
 
-It will be saved in saved/YYYYmmdd-HHMMSS.json
+It will be saved in `saved/YYYYmmdd-HHMMSS.json`
 
 To print out a table with the running programs
 
