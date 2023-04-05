@@ -27,7 +27,7 @@ def get_active_workspaces(mongo_url, mongo_db):
     time_now = datetime.datetime.now()
     ws = workspaces.find({"state": "CLAIMED"})
     info = list()
-    for w in ws:1
+    for w in ws:
         last_activity = w.get("parameters", {}).get("last_activity")
         if not last_activity or not type(last_activity) == str:
             print(
@@ -106,7 +106,9 @@ def run():
     mongo_url = os.environ.get("MONGO_URL")
     mongo_db = os.environ.get("MONGO_DB")
     if not mongo_url or not mongo_db:
-        print("You must define MONGO_URL and MONGO_DB environmental variables. Exiting.")
+        print(
+            "You must define MONGO_URL and MONGO_DB environmental variables. Exiting."
+        )
         return
 
     ws = list(get_active_workspaces(mongo_url, mongo_db))
