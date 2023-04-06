@@ -84,6 +84,10 @@ progs = [
     programs.identify_matlab2021a,
     programs.identify_xvnc,
     programs.identify_xfwm4,
+    programs.identify_dissolve,
+    programs.identify_fiji,
+    programs.identify_gudpy,
+    programs.identify_gudrun,
 ]
 
 

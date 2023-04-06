@@ -58,3 +58,27 @@ def identify_xfwm4(user_processes):
     for p in user_processes:
         if "xfwm4" in p:
             return "xfwm4"
+
+
+def identify_dissolve(user_processes):
+    for p in user_processes:
+        if "bin/dissolve-gui" in p:
+            return "dissolve"
+
+
+def identify_fiji(user_processes):
+    for p in user_processes:
+        if "/opt/Fiji.app/ImageJ-linux64" in p:
+            return "Fiji"
+
+
+def identify_gudpy(user_processes):
+    for p in user_processes:
+        if "/opt/GudPy/gudpy" in p:
+            return "GudPy"
+
+
+def identify_gudrun(user_processes):
+    for p in user_processes:
+        if "GudrunGUI/GudrunGUI_4.jar" in p:
+            return "GudRun"

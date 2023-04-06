@@ -22,12 +22,12 @@ To get the data:
 python3 main.py run
 ```
 
-It will be saved in `saved/YYYYmmdd-HHMMSS.json`
+It will be saved in `saved/YYYYmmdd/HHMMSS.json`
 
 To print out a table with the running programs:
 
 ```
-python3 main.py out1 saved/YYYYmmdd-HHMMSS.json
+python3 main.py out1 saved/YYYYmmdd/HHMMSS.json
 ```
 
 ## Identified programs
@@ -46,13 +46,13 @@ python3 main.py out1 saved/YYYYmmdd-HHMMSS.json
 - [ ] Cambridge Structural Database System (CSD-System) - Has multiple execs, Sanghamitra has said they use Conquest and Mercury in particular
 - [ ] CSD crossminer
 - [ ] DL_Poly
-- [ ] Dissolve
-- [ ] Fiji
+- [x] Dissolve
+- [x] Fiji
 - [ ] FullProf
 - [ ] GROMACS
 - [ ] GSAS-II
-- [ ] GudPy
-- [ ] GudRun
+- [x] GudPy
+- [x] GudRun
 - [ ] Horace - this is a matlab toolbox but the word horace might be in the process name somewhere
 - [ ] Jupyter notebook + Jupyter lab
 - [ ] LAMMPS
