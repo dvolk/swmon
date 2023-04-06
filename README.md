@@ -54,7 +54,7 @@ python3 main.py out1 saved/YYYYmmdd/HHMMSS.json
 - [x] GudPy
 - [x] GudRun
 - [x] Horace - this is a matlab toolbox but the word horace might be in the process name somewhere
-- [ ] Jupyter notebook + Jupyter lab
+- [x] Jupyter notebook + Jupyter lab
 - [ ] LAMMPS
 - [ ] MDANSE
 - [ ] Mantid
