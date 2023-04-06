@@ -8,11 +8,11 @@ import subprocess
 import pathlib
 import collections
 import os
+import inspect
 
 import pymongo
 import argh
 
-import programs
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -74,28 +74,10 @@ def get_running(ws):
     return ret
 
 
-progs = [
-    programs.identify_firefox,
-    programs.identify_epsr,
-    programs.identify_mantidworkbench65,
-    programs.identify_mantidworkbenchnightly,
-    programs.identify_sasview5,
-    programs.identify_libreoffice,
-    programs.identify_matlab2021a,
-    programs.identify_xvnc,
-    programs.identify_xfwm4,
-    programs.identify_dissolve,
-    programs.identify_fiji,
-    programs.identify_gudpy,
-    programs.identify_gudrun,
-    programs.identify_mcstas,
-    programs.identify_horace,
-    programs.identify_mathematica,
-    programs.identify_fullprof,
-]
-
-
 def identify_programs(ws):
+    import programs
+
+    progs = [x[1] for x in inspect.getmembers(programs, inspect.isfunction)]
     for w in ws:
         w["found_programs"] = list()
         up = w["user_processes"]
