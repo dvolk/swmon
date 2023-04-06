@@ -112,3 +112,66 @@ def identify_jupyter_notebook(user_processes):
     for p in user_processes:
         if "/opt/jupyter/bin/python /opt/jupyter/bin/jupyter-notebook" in p:
             return "jupyter-notebook"
+
+
+def identify_jupyter_lab(user_processes):
+    for p in user_processes:
+        if "/opt/jupyter/bin/python /opt/jupyter/bin/jupyter-lab" in p:
+            return "jupyter-lab"
+
+
+def identify_gromacs(user_processes):
+    for p in user_processes:
+        if "/usr/local/bin/gromacs_bashrc" in p:
+            return "gromacs"
+
+
+def identify_atsas(user_processes):
+    for p in user_processes:
+        if "/usr/local/bin/atsas/atsas_cli_launcher" in p:
+            return "atsas"
+
+
+def identify_gsas2(user_processes):
+    for p in user_processes:
+        if "/opt/gsas2/bin/python /opt/gsas2/GSASII/GSASII.py" in p:
+            return "gsas2"
+
+
+def identify_mantidimaging(user_processes):
+    for p in user_processes:
+        if (
+            "/opt/mambaforge/envs/mantidimaging/bin/python3.9 /opt/mambaforge/envs/mantidimaging/bin/mantidimaging"
+            in p
+        ):
+            return "mantidimaging"
+
+
+def identify_turbovnc(user_processes):
+    for p in user_processes:
+        if "/opt/TurboVNC/bin/Xvnc" in p:
+            return "turbovnc"
+
+
+def identify_sscanss(user_processes):
+    for p in user_processes:
+        if "/opt/sscanss2/bin/sscanss" in p:
+            return "SScanSS2"
+
+
+def identify_dlpoly(user_processes):
+    for p in user_processes:
+        if "java -jar ../java/GUI.jar" in p:
+            return "dlpoly"
+
+
+def identify_aten(user_processes):
+    a = False
+    b = False
+    for p in user_processes:
+        if "/bin/sh /.singularity.d/runscript" in p:
+            a = True
+        if "/opt/squashfs-root/AppRun" in p:
+            b = True
+    if a and b:
+        return "aten"

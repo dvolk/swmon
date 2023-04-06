@@ -41,24 +41,23 @@ python3 main.py out1 saved/YYYYmmdd/HHMMSS.json
 - [x] Matlab 2021a
 - [x] Xvnc
 - [x] Xfwm4
-- [ ] ATSAS
-- [ ] Aten
+- [x] ATSAS
+- [x] Aten
 - [ ] Cambridge Structural Database System (CSD-System) - Has multiple execs, Sanghamitra has said they use Conquest and Mercury in particular
 - [ ] CSD crossminer
-- [ ] DL_Poly
+- [x] DL_Poly
 - [x] Dissolve
 - [x] Fiji
 - [x] FullProf
-- [ ] GROMACS
-- [ ] GSAS-II
+- [x] GROMACS
+- [x] GSAS-II
 - [x] GudPy
 - [x] GudRun
 - [x] Horace - this is a matlab toolbox but the word horace might be in the process name somewhere
 - [x] Jupyter notebook + Jupyter lab
 - [ ] LAMMPS
 - [ ] MDANSE
-- [ ] Mantid
-- [ ] Mantid Imaging
+- [x] Mantid Imaging
 - [x] Mathematica
 - [x] McStas
-- [ ] SScanSS 2
+- [x] SScanSS 2
