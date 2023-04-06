@@ -82,3 +82,27 @@ def identify_gudrun(user_processes):
     for p in user_processes:
         if "GudrunGUI/GudrunGUI_4.jar" in p:
             return "GudRun"
+
+
+def identify_mcstas(user_processes):
+    for p in user_processes:
+        if "/usr/local/bin/mcstas_launcher" in p:
+            return "mcstas"
+
+
+def identify_horace(user_processes):
+    for p in user_processes:
+        if "/opt/matlab2021b/bin/glnxa64/MATLAB -r horace_on" in p:
+            return "horace"
+
+
+def identify_mathematica(user_processes):
+    for p in user_processes:
+        if "/opt/mathematica12/Executables/Mathematica" in p:
+            return "mathematica"
+
+
+def identify_fullprof(user_processes):
+    for p in user_processes:
+        if "/usr/local/bin/FullProf_Suite/tfp" in p:
+            return "fullprof"

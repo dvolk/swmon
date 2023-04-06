@@ -88,6 +88,10 @@ progs = [
     programs.identify_fiji,
     programs.identify_gudpy,
     programs.identify_gudrun,
+    programs.identify_mcstas,
+    programs.identify_horace,
+    programs.identify_mathematica,
+    programs.identify_fullprof,
 ]
 
 
