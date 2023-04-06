@@ -69,7 +69,7 @@ def get_running_1(w):
 
 
 def get_running(ws):
-    with Pool(5) as p:
+    with Pool(10) as p:
         ret = p.map(get_running_1, ws)
     return ret
 
