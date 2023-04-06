@@ -116,8 +116,11 @@ def run():
 
     ws = list(get_active_workspaces(mongo_url, mongo_db))
     ws = get_running(ws)
-    pathlib.Path("saved").mkdir(exist_ok=True)
-    filename = f"saved/{datetime.datetime.now().strftime('%Y%m%d-%H%M%S')}.json"
+    date = datetime.datetime.now().strftime("%Y%m%d")
+    pathlib.Path("saved/").mkdir(exist_ok=True)
+    pathlib.Path(f"saved/{date}").mkdir(exist_ok=True)
+    time = datetime.datetime.now().strftime("%H%M%S")
+    filename = f"saved/{date}/{time}.json"
     print(f"saving to {filename}")
     with open(filename, "w") as f:
         f.write(json.dumps(ws, indent=4))
