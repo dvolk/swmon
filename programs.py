@@ -106,3 +106,9 @@ def identify_fullprof(user_processes):
     for p in user_processes:
         if "/usr/local/bin/FullProf_Suite/tfp" in p:
             return "fullprof"
+
+
+def identify_jupyter_notebook(user_processes):
+    for p in user_processes:
+        if "/opt/jupyter/bin/python /opt/jupyter/bin/jupyter-notebook" in p:
+            return "jupyter-notebook"
