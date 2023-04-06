@@ -48,17 +48,17 @@ python3 main.py out1 saved/YYYYmmdd/HHMMSS.json
 - [ ] DL_Poly
 - [x] Dissolve
 - [x] Fiji
-- [ ] FullProf
+- [x] FullProf
 - [ ] GROMACS
 - [ ] GSAS-II
 - [x] GudPy
 - [x] GudRun
-- [ ] Horace - this is a matlab toolbox but the word horace might be in the process name somewhere
+- [x] Horace - this is a matlab toolbox but the word horace might be in the process name somewhere
 - [ ] Jupyter notebook + Jupyter lab
 - [ ] LAMMPS
 - [ ] MDANSE
 - [ ] Mantid
 - [ ] Mantid Imaging
-- [ ] Mathematica
-- [ ] McStas
+- [x] Mathematica
+- [x] McStas
 - [ ] SScanSS 2
