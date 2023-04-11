@@ -132,8 +132,14 @@ def run(last_activity_cutoff_seconds=600):
     time = datetime.datetime.now().strftime("%H%M%S")
     filename = f"saved/{date}/{time}.json"
     print(f"saving to {filename}")
+    data = {
+        "date": date,
+        "time": time,
+        "last_activity_cutoff_seconds": last_activity_cutoff_seconds,
+        "workspaces": ws,
+    }
     with open(filename, "w") as f:
-        f.write(json.dumps(ws, indent=4))
+        f.write(json.dumps(data, indent=4))
 
 
 def make_count(ws):
@@ -148,20 +154,25 @@ def make_count(ws):
 def out1(filename):
     """Print a json dict showing frequency of programs found at a certain time."""
     ws = json.loads(pathlib.Path(filename).read_text())
-    ws = identify_programs(ws)
-    progs = make_count(ws)
-    p = pathlib.Path(filename)
-    date = p.parent.name
-    time = p.stem
-    return json.dumps({"datetime": date + time, "count": progs}, indent=4)
+    ws["workspaces"] = identify_programs(ws["workspaces"])
+    progs = make_count(ws["workspaces"])
+    return json.dumps(
+        {
+            "date": ws["date"],
+            "time": ws["time"],
+            "last_activity_cutoff_seconds": ws["last_activity_cutoff_seconds"],
+            "count": progs,
+        },
+        indent=4,
+    )
 
 
 def out2(filename):
     """Print a table showing frequency of programs found at a certain time."""
     ws = json.loads(pathlib.Path(filename).read_text())
-    print(f"analysing {len(ws)} workspaces")
-    ws = identify_programs(ws)
-    progs = make_count(ws)
+    print(f"analysing {len(ws['workspaces'])} workspaces")
+    ws["workspaces"] = identify_programs(ws["workspaces"])
+    progs = make_count(ws["workspaces"])
 
     import tabulate
 
