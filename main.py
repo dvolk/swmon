@@ -66,7 +66,7 @@ def get_running_1(w):
         "ssh",
         "-oUserKnownHostsFile=/dev/null",
         "-oStrictHostKeyChecking=no",
-        "-i platform-key",
+        "-i ssh_key",
         f"root@{hostname}",
         f"ps -wwo command -U {owner}",
     ]
