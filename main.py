@@ -87,8 +87,8 @@ def get_running_1(w):
     return w
 
 
-def get_running(ws):
-    with Pool(10) as p:
+def get_running(ws, parallel_ssh_jobs):
+    with Pool(parallel_ssh_jobs) as p:
         ret = p.map(get_running_1, ws)
     return ret
 
@@ -108,7 +108,7 @@ def identify_programs(ws):
     return ws
 
 
-def run(last_activity_cutoff_seconds=600):
+def run(last_activity_cutoff_seconds=600, parallel_ssh_jobs=10):
     """Main pipeline:
 
     we get the list of active workspaces,
@@ -125,7 +125,7 @@ def run(last_activity_cutoff_seconds=600):
         return
 
     ws = list(get_active_workspaces(mongo_url, mongo_db, last_activity_cutoff_seconds))
-    ws = get_running(ws)
+    ws = get_running(ws, parallel_ssh_jobs)
     date = datetime.datetime.now().strftime("%Y%m%d")
     pathlib.Path("saved/").mkdir(exist_ok=True)
     pathlib.Path(f"saved/{date}").mkdir(exist_ok=True)
@@ -160,6 +160,7 @@ def out1(filename):
         {
             "date": ws["date"],
             "time": ws["time"],
+            "number_of_workspaces": len(ws["workspaces"]),
             "last_activity_cutoff_seconds": ws["last_activity_cutoff_seconds"],
             "count": progs,
         },
