@@ -175,3 +175,21 @@ def identify_aten(user_processes):
             b = True
     if a and b:
         return "aten"
+
+
+def identify_sublime(user_processes):
+    for p in user_processes:
+        if "/opt/sublime_text/sublime_text" in p:
+            return "sublime_text"
+
+
+def identify_gedit(user_processes):
+    for p in user_processes:
+        if "/usr/bin/gedit" in p:
+            return "gedit"
+
+
+def identify_emacs(user_processes):
+    for p in user_processes:
+        if "emacs" in p:
+            return "emacs"
