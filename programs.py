@@ -48,6 +48,12 @@ def identify_sasview5(user_processes):
             return "sasview-5"
 
 
+def identify_sasplot(user_processes):
+    for p in user_processes:
+        if "/usr/bin/sasplot" in p:
+            return "sasplot"
+
+
 def identify_libreoffice(user_processes):
     for p in user_processes:
         if "/usr/lib64/libreoffice/program/soffice.bin" in p:
@@ -303,3 +309,9 @@ def identify_evince(user_processes):
     for p in user_processes:
         if "evince" in p:
             return "evince"
+
+
+def identify_zombie(user_processes):
+    for p in user_processes:
+        if "<defunct>" in p:
+            return "zombie"
