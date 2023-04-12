@@ -12,10 +12,10 @@ def identify_firefox(user_processes):
 
 def identify_epsr(user_processes):
     for p in user_processes:
-        if "/opt/epsr26/EPSR/bin/epsr" in p:
+        if "/opt/epsr26/EPSR/bin/" in p:
             return "EPSR-26"
-        if "/opt/epsr26/EPSR/gui/EPSRshell.jar" in p:
-            return "EPSR-25"
+        if "/opt/epsr26/EPSR/gui/" in p:
+            return "EPSR-26"
 
 
 def identify_mantidworkbench64(user_processes):
