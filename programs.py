@@ -18,10 +18,22 @@ def identify_epsr(user_processes):
             return "EPSR-25"
 
 
+def identify_mantidworkbench64(user_processes):
+    for p in user_processes:
+        if "/opt/mantidworkbench6.4/bin/mantidworkbench" in p:
+            return "mantidworkbench-64"
+
+
 def identify_mantidworkbench65(user_processes):
     for p in user_processes:
         if "/opt/mantidworkbench6.5/bin/mantidworkbench" in p:
             return "mantidworkbench-65"
+
+
+def identify_mantidworkbench66(user_processes):
+    for p in user_processes:
+        if "/opt/mantidworkbench6.6/bin/mantidworkbench" in p:
+            return "mantidworkbench-66"
 
 
 def identify_mantidworkbenchnightly(user_processes):
@@ -46,6 +58,12 @@ def identify_matlab2021a(user_processes):
     for p in user_processes:
         if "/opt/matlab2021a/bin/glnxa64/MATLAB" in p:
             return "matlab-2021a"
+
+
+def identify_matlab2021b(user_processes):
+    for p in user_processes:
+        if "/opt/matlab2021b/bin/glnxa64/MATLAB" in p:
+            return "matlab-2021b"
 
 
 def identify_xvnc(user_processes):
@@ -165,6 +183,12 @@ def identify_dlpoly(user_processes):
             return "dlpoly"
 
 
+def identify_jv(user_processes):
+    for p in user_processes:
+        if "jv" == p:
+            return "jv"
+
+
 def identify_aten(user_processes):
     a = False
     b = False
@@ -193,3 +217,45 @@ def identify_emacs(user_processes):
     for p in user_processes:
         if "emacs" in p:
             return "emacs"
+
+
+def identify_gnuplot(user_processes):
+    for p in user_processes:
+        if "gnuplot" in p:
+            return "gnuplot"
+
+
+def identify_sftp(user_processes):
+    for p in user_processes:
+        if "sftp" in p:
+            return "sftp"
+
+
+def identify_risretto(user_processes):
+    for p in user_processes:
+        if "risretto" in p:
+            return "risretto"
+
+
+def identify_mpirun(user_processes):
+    for p in user_processes:
+        if "mpirun" in p:
+            return "mpirun"
+
+
+def identify_refnx(user_processes):
+    for p in user_processes:
+        if "/opt/refnx/bin/python /usr/bin/refnx" in p:
+            return "refnx"
+
+
+def identify_xfce4_terminal(user_processes):
+    for p in user_processes:
+        if "/usr/bin/xfce4-terminal" == p:
+            return "xfce4-terminal"
+
+
+def identify_vscode(user_processes):
+    for p in user_processes:
+        if "/usr/share/code/code" in p:
+            return "vscode"
