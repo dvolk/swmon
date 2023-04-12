@@ -108,6 +108,12 @@ def identify_mcstas(user_processes):
             return "mcstas"
 
 
+def identify_vmd(user_processes):
+    for p in user_processes:
+        if "/usr/local/lib/vmd/vmd_LINUXAMD64" in p:
+            return "vmd"
+
+
 def identify_horace(user_processes):
     for p in user_processes:
         if "/opt/matlab2021b/bin/glnxa64/MATLAB -r horace_on" in p:
@@ -130,6 +136,8 @@ def identify_jupyter_notebook(user_processes):
     for p in user_processes:
         if "/opt/jupyter/bin/python /opt/jupyter/bin/jupyter-notebook" in p:
             return "jupyter-notebook"
+        if "/opt/anaconda/bin/python /opt/anaconda/bin/jupyter-notebook" in p:
+            return "jupyter-notebook"
 
 
 def identify_jupyter_lab(user_processes):
@@ -148,6 +156,12 @@ def identify_atsas(user_processes):
     for p in user_processes:
         if "/usr/local/bin/atsas/atsas_cli_launcher" in p:
             return "atsas"
+
+
+def identify_gsas(user_processes):
+    for p in user_processes:
+        if "/opt/gsas/GSAS" in p:
+            return "gsas"
 
 
 def identify_gsas2(user_processes):
@@ -259,3 +273,33 @@ def identify_vscode(user_processes):
     for p in user_processes:
         if "/usr/share/code/code" in p:
             return "vscode"
+
+
+def identify_thunar(user_processes):
+    for p in user_processes:
+        if "thunar" in p:
+            return "thunar"
+
+
+def identify_avizo3d(user_processes):
+    for p in user_processes:
+        if "/opt/AmiraAvizo3D/2021.1/bin/arch-LinuxAMD64-Optimize/Avizo3D" in p:
+            return "avizo3d-2021.1"
+
+
+def identify_refl1d(user_processes):
+    for p in user_processes:
+        if "/opt/refl1d/bin/python /usr/bin/refl1d" in p:
+            return "refl1d"
+
+
+def identify_musrfit(user_processes):
+    for p in user_processes:
+        if "bash --rcfile /usr/local/bin/musrfit_bashrc" in p:
+            return "musrfit"
+
+
+def identify_evince(user_processes):
+    for p in user_processes:
+        if "evince" in p:
+            return "evince"
