@@ -44,7 +44,7 @@ python3 main.py out1 saved/YYYYmmdd/HHMMSS.json
 - [x] ATSAS
 - [x] Aten
 - [ ] Cambridge Structural Database System (CSD-System) - Has multiple execs, Sanghamitra has said they use Conquest and Mercury in particular
-- [ ] CSD crossminer
+- [x] CSD crossminer
 - [x] DL_Poly
 - [x] Dissolve
 - [x] Fiji
@@ -56,7 +56,7 @@ python3 main.py out1 saved/YYYYmmdd/HHMMSS.json
 - [x] Horace - this is a matlab toolbox but the word horace might be in the process name somewhere
 - [x] Jupyter notebook + Jupyter lab
 - [ ] LAMMPS
-- [ ] MDANSE
+- [x] MDANSE
 - [x] Mantid Imaging
 - [x] Mathematica
 - [x] McStas
