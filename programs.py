@@ -315,3 +315,79 @@ def identify_zombie(user_processes):
     for p in user_processes:
         if "<defunct>" in p:
             return "zombie"
+
+
+def identify_ase(user_processes):
+    for p in user_processes:
+        if "/opt/jupyter/bin/python /opt/jupyter/bin/ase-gui" in p:
+            return "ase"
+
+
+def identify_csd_crossminer(user_processes):
+    for p in user_processes:
+        if "/bin/sh /opt/ccdc/CSD_CrossMiner/bin/crossminer" in p:
+            return "csd_prossminer"
+
+
+def identify_dave(user_processes):
+    for p in user_processes:
+        if "/opt/dave/idl88/bin/bin.linux.x86_64/idl" in p:
+            return "dave"
+
+
+def identify_dl_field(user_processes):
+    for p in user_processes:
+        if "xfce4-terminal -T DL_FIELD" in p:
+            return "dl_field"
+
+
+def identify_grace(user_processes):
+    for p in user_processes:
+        if "/opt/grace/bin/xmgrace" in p:
+            return "grace"
+
+
+def identify_jmol(user_processes):
+    for p in user_processes:
+        if "java -jar /opt/jmol-14.31.0/Jmol.jar" in p:
+            return "jmol-14_31_0"
+
+
+def identify_vesta348(user_processes):
+    for p in user_processes:
+        if "/usr/local/vesta-3.4.8/VESTA" in p:
+            return "vesta-348"
+
+
+def identify_materialsstudio2021(user_processes):
+    for p in user_processes:
+        if "xfce4-terminal -T MaterialsStudio2021" in p:
+            return "materialsstudio-2021"
+
+
+def identify_mcxtrace17(user_processes):
+    for p in user_processes:
+        if "python3 /usr/local/mcxtrace/1.7/bin/../tools/Python/mxgui/mcgui.py" in p:
+            return "mcxtrace-17"
+
+
+def identify_hdfview311(user_processes):
+    for p in user_processes:
+        if "/bin/bash /opt/HDFView/3.1.1/hdfview.sh" in p:
+            return "hdfview-311"
+
+
+def identify_mdanse(user_processes):
+    for p in user_processes:
+        if "/usr/local/bin/python /usr/local/bin/mdanse_gui" in p:
+            return "mdanse"
+        if (
+            "xfce4-terminal -T MDANSE (beta) Terminal -e apptainer shell /opt/containers/mdanse_beta.sif"
+            in p
+        ):
+            return "mdanse"
+        if (
+            "xfce4-terminal -T MDANSE (stable) Terminal -e apptainer shell /opt/containers/mdanse_latest.sif"
+            in p
+        ):
+            return "mdanse"
